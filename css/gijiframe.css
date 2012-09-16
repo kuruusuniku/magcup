@@ -1,0 +1,44 @@
+html{
+    height:100%;
+}
+
+body{
+    height:100%;
+    width:100%;
+    margin:0px auto;
+}
+
+#main{
+	position: relative;
+/*	display: -webkit-box;
+	display: -moz-box;
+	-webkit-box-pack:center;
+	-moz-box-pack:center;*/
+}
+#header{
+	height: 100px;
+}
+#controller{
+	width: 170px;
+	position: fixed;
+	left:2%;
+	font: 62.5% "Trebuchet MS", sans-serif;
+	z-index:100;
+}
+#controller2{
+	width: 170px;
+	position: fixed;
+	right:2%;
+	bottom:0px;
+	z-index:100;
+}
+#controller3{
+	width: 95%;
+	position: fixed;
+	bottom:50px;
+	left: 2%;
+	z-index:99;
+}
+#wrapper{
+	margin:0px auto;
+}

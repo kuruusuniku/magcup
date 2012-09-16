@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* --- 縦中横 --- */
+span.tcy {
+    text-combine: horizontal;
+    -webkit-text-combine: horizontal;
+    -epub-text-combine: horizontal;
+}
+/* --- 縦書き --- */
+.vertical {
+   font-family: "Hiragino Mincho ProN W3", "@ＭＳ 明朝", serif, sans-serif;
+    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+    -epub-writing-mode: vertical-rl;
+    line-height: 1.75;
+    text-align: justify;
+    font-size : 1em;
+}
+/* --- 縦書き２ --- */
+.vertical2 {
+    font-family:	"@Hiragino Mincho ProN","@ヒラギノ明朝 Pro W3","@IPAexMincho","@IPAex明朝","@MS Mincho","@ＭＳ 明朝","Hiragino Mincho ProN","ヒラギノ明朝 Pro W3","IPAexMincho","IPAex明朝",serif, serif, sans-serif;
+    writing-mode:	vertical-rl;
+    -webkit-writing-mode:	vertical-rl;
+    line-height: 1.25;
+    text-align: justify;
+    font-size : 1em;
+}
+.xh1{height:300px;}
