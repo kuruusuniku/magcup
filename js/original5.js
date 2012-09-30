@@ -43,6 +43,9 @@ $('.wrapper').masonry();
 // DoragSort
 $("#wrapper").sortable();
 
+//
+$("#controller").sidemenu();
+
 // GRID part
 var blocks = $('.box','#wrapper');
 blocks.hover(function () {
@@ -73,10 +76,10 @@ blocks.click(function () {
 // Controller part
 $("#accordion").accordion({ header: "h3" });
 $('#tabs').tabs();
-	$('#dialog_link, ul#icons li').hover(
-		function() { $(this).addClass('ui-state-hover'); },
-		function() { $(this).removeClass('ui-state-hover'); }
-	);
+$('#dialog_link, ul#icons li').hover(
+	function() { $(this).addClass('ui-state-hover'); },
+	function() { $(this).removeClass('ui-state-hover'); }
+);
 
 $(".open").click(function(){
   $("#slideBox").slideToggle("slow");
