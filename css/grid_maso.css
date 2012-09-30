@@ -1,0 +1,189 @@
+                                
+  #wrapper {                                              
+  	width: 980px;
+  	height: 1390px;                     
+  	margin: 0;                        
+  	padding: 0;                         
+  	background-image:url(../img/cotton-wall.png);
+  	position: relative;
+    }                                                      
+                                      
+  .block {                            
+    position: absolute;               
+    /*background: rgba(255,0,0,.2);*/
+	border: inset 3px transparent;
+	/*border-width: 2px 0;*/
+	margin: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: solid 3px #55bfff;
+	
+    }
+  .box {
+    width: 190px;  
+    margin: 3px;  
+    padding: 10px;  
+    float: left;  
+    background: #424242;  
+    color: #FFF;  
+    display: inline;  /* IE6 fix */
+    border: 3px solid #ccc;
+  }
+  .hilite{
+    z-index:auto;
+   	border: solid 3px #00bfff;
+  } 
+  .hilite2{
+    z-index:1000;
+   	border: solid 3px #2584CF;
+  }
+
+/* img style */
+  img.flright{
+   	float: right;
+  }
+  img.flleft{
+   	float: left;
+  }
+
+/* swich style */
+	.cb-enable, .cb-disable, .cb-enable span, .cb-disable span { background: url(../css/iphone-style-switches/switch.gif) repeat-x; display: block; float: left; }
+    .cb-enable span, .cb-disable span { line-height: 30px; display: block; background-repeat: no-repeat; font-weight: bold; }
+    .cb-enable span { background-position: left -90px; padding: 0 10px; }
+    .cb-disable span { background-position: right -180px;padding: 0 10px; }
+    .cb-disable.selected { background-position: 0 -30px; }
+    .cb-disable.selected span { background-position: right -210px; color: #fff; }
+    .cb-enable.selected { background-position: 0 -60px; }
+    .cb-enable.selected span { background-position: left -150px; color: #fff; }
+    .switch label { cursor: pointer; }
+    .switch input { display: none; }
+    
+/* sonota */                   
+  .controllerbg{
+   	background: #6080e0;
+   	width: 150px;
+    height: 500px;
+    z-index:100;
+    padding: 10px;
+  }
+  .controller3css{
+   	width: 100%;
+    height: 150px;
+    z-index:100;
+    padding: 10px;
+  }
+  
+  p.ui-state-default {
+	margin: 2px;
+	position: relative;
+	padding: 4px 0;
+	cursor: pointer;
+	float: left;
+  }
+  span.ui-icon {
+	float: left;
+	margin: 0 4px;
+  }
+                                      
+  .inner {                            
+    height: 100%;                     
+    width: 100%;                      
+    }                                 
+                                      
+  .s1x1 {width: 120px;height: 168px;}
+  .s2x1 {width: 240px;height: 168px;}
+  .s3x1 {width: 360px;height: 168px;}
+  .s4x1 {width: 480px;height: 168px;}
+  .s5x1 {width: 600px;height: 168px;}
+  .s6x1 {width: 720px;height: 168px;}
+  .s7x1 {width: 840px;height: 168px;}
+  .s8x1 {width: 960px;height: 168px;}
+  
+  .s1x2 {width: 120px;height: 362px;}
+  .s2x2 {width: 240px;height: 362px;}
+  .s3x2 {width: 360px;height: 362px;}
+  .s4x2 {width: 480px;height: 362px;}
+  .s5x2 {width: 600px;height: 362px;}
+  .s6x2 {width: 720px;height: 362px;}
+  .s7x2 {width: 840px;height: 362px;}
+  .s8x2 {width: 960px;height: 362px;}
+  
+  .s1x3 {width: 120px;height: 558px;}
+  .s2x3 {width: 240px;height: 558px;}
+  .s3x3 {width: 360px;height: 558px;}
+  .s4x3 {width: 480px;height: 558px;}
+  .s5x3 {width: 600px;height: 558px;}
+  .s6x3 {width: 720px;height: 558px;}
+  .s7x3 {width: 840px;height: 558px;}
+  .s8x3 {width: 960px;height: 558px;}
+  
+  .s1x4 {width: 120px;height: 754px;}
+  .s2x4 {width: 240px;height: 754px;}
+  .s3x4 {width: 360px;height: 754px;}
+  .s4x4 {width: 480px;height: 754px;}
+  .s5x4 {width: 600px;height: 754px;}
+  .s6x4 {width: 720px;height: 754px;}
+  .s7x4 {width: 840px;height: 754px;}
+  .s8x4 {width: 960px;height: 754px;}
+  
+  .s1x5 {width: 120px;height: 948px;}
+  .s2x5 {width: 240px;height: 948px;}
+  .s3x5 {width: 360px;height: 948px;}
+  .s4x5 {width: 480px;height: 948px;}
+  .s5x5 {width: 600px;height: 948px;}
+  .s6x5 {width: 720px;height: 948px;}
+  .s7x5 {width: 840px;height: 948px;}
+  .s8x5 {width: 960px;height: 948px;}
+  
+  .s1x6 {width: 120px;height: 1143px;}
+  .s2x6 {width: 240px;height: 1143px;}
+  .s3x6 {width: 360px;height: 1143px;}
+  .s4x6 {width: 480px;height: 1143px;}
+  .s5x6 {width: 600px;height: 1143px;}
+  .s6x6 {width: 720px;height: 1143px;}
+  .s7x6 {width: 840px;height: 1143px;}
+  .s8x6 {width: 960px;height: 1143px;}
+  
+  .s1x7 {width: 120px;height: 1339px;}
+  .s2x7 {width: 240px;height: 1339px;}
+  .s3x7 {width: 360px;height: 1339px;}
+  .s4x7 {width: 480px;height: 1339px;}
+  .s5x7 {width: 600px;height: 1339px;}
+  .s6x7 {width: 720px;height: 1339px;}
+  .s7x7 {width: 840px;height: 1339px;}
+  .s8x7 {width: 960px;height: 1339px;}
+  
+  .s1x8 {width: 120px;height: 1534px;}
+  .s2x8 {width: 240px;height: 1534px;}
+  .s3x8 {width: 360px;height: 1534px;}
+  .s4x8 {width: 480px;height: 1534px;}
+  .s5x8 {width: 600px;height: 1534px;}
+  .s6x8 {width: 720px;height: 1534px;}
+  .s7x8 {width: 840px;height: 1534px;}
+  .s8x8 {width: 960px;height: 1534px;}
+
+  
+                                      
+                           
+  .creditline {                       
+    position: absolute;               
+    top: 850px;                       
+    left: 10px;                       
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;                  
+    color: gray;                      
+  }      
+
+/* clearfix */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+ /* IE6 */
+* html .clearfix { zoom: 1;}
+ /* IE7 */
+*:first-child+html .clearfix {zoom: 1;}

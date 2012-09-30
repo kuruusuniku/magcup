@@ -37,8 +37,14 @@ $("#cl-input").cleditor({
                         [["本文", "<p>"], ["見出し", "<h2>"]]
 });
 
+// Masonary
+$('.wrapper').masonry();
+
+// DoragSort
+$("#wrapper").sortable();
+
 // GRID part
-var blocks = $('.block','#wrapper');
+var blocks = $('.box','#wrapper');
 blocks.hover(function () {
   $(this).addClass("hilite");
 }, function () {
@@ -304,7 +310,7 @@ function getGridByThePosition(thisPosition){
 
 // Scan All Positions
 function scanAllPositions(){
-    blocks = $('.block','#wrapper');
+    blocks = $('.box','#wrapper');
     var belong = {};
 	for(var i = 0; i < blocks.length; i++){
 		var tempgrid = getAnyGridInfo($(blocks[i]).attr("class").split(" "));
