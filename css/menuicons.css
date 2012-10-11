@@ -1,13 +1,35 @@
 /* sidemenu images */
 .sidemenu-icon-yoko-kakudai { width: 44px; height: 44px; background-image: url(../img/icons/40px_yoko_kakudai.gif); }
 .sidemenu-icon-yoko-kakudai-mouseover { width: 44px; height: 44px; background-image: url(../img/icons/40px_yoko_kakudai_mouseover.gif); }
-.sidemenu-icon-yoko-shukusyo { width: 16px; height: 16px; background-image: url(../img/icons/yoko_shukusyo.gif); }
-.sidemenu-icon-tate-shukusyo-mouseover { width: 16px; height: 16px; background-image: url(../img/icons/yoko_shukusyo-mouseover.gif); }
-.sidemenu-icon-tate-kakudai { width: 16px; height: 16px; background-image: url(../img/icons/tate_kakudai.gif); }
-.sidemenu-icon-tate-kakudai-mouseover { width: 16px; height: 16px; background-image: url(../img/icons/tate_kakudai_mouseover.gif); }
-.sidemenu-icon-tate-shukusyo { width: 16px; height: 16px; background-image: url(../img/icons/tate_shukusyo.gif); }
-.sidemenu-icon-tate-shukusyo-mouseover { width: 16px; height: 16px; background-image: url(../img/icons/tate_shukusyo_mouseover.gif); }
-.sidemenu-icon-tate-tategaki { width: 16px; height: 16px; background-image: url(../img/icons/tategaki.gif); }
-.sidemenu-icon-tate-tategaki-mouseover { width: 16px; height: 16px; background-image: url(../img/icons/tategaki_mouseover.gif); }
-.sidemenu-icon-tate-tategaki { width: 16px; height: 16px; background-image: url(../img/icons/yokogaki.gif); }
-.sidemenu-icon-tate-tategaki-mouseover { width: 16px; height: 16px; background-image: url(../img/icons/yokogaki_mouseover.gif); }
+.sidemenu-icon-yoko-shukusyo { width: 44px; height: 44px; background-image: url(../img/icons/40px_yoko_shukusyo.gif); }
+.sidemenu-icon-yoko-shukusyo-mouseover { width: 44px; height: 44px; background-image: url(../img/icons/40px_yoko_shukusyo_mouseover.gif); }
+.sidemenu-icon-tate-kakudai { width: 44px; height: 44px; background-image: url(../img/icons/40px_tate_kakudai.gif); }
+.sidemenu-icon-tate-kakudai-mouseover { width: 44px; height: 44px; background-image: url(../img/icons/40px_tate_kakudai_mouseover.gif); }
+.sidemenu-icon-tate-shukusyo { width: 44px; height: 44px; background-image: url(../img/icons/40px_tate_shukusyo.gif); }
+.sidemenu-icon-tate-shukusyo-mouseover { width: 44px; height: 44px; background-image: url(../img/icons/40px_tate_shukusyo_mouseover.gif); }
+.sidemenu-icon-tategaki { width: 44px; height: 44px; background-image: url(../img/icons/40px_tategaki.gif); }
+.sidemenu-icon-tategaki-mouseover { width: 44px; height: 44px; background-image: url(../img/icons/40px_tategaki_mouseover.gif); }
+.sidemenu-icon-yokogaki { width: 44px; height: 44px; background-image: url(../img/icons/40px_yokogaki.gif); }
+.sidemenu-icon-yokogaki-mouseover { width: 44px; height: 44px; background-image: url(../img/icons/40px_yokogaki_mouseover.gif); }
+.sidemenu-icon-ueni { width: 44px; height: 44px; background-image: url(../img/icons/40px_ueni.gif); }
+.sidemenu-icon-ueni-mouseover { width: 44px; height: 44px; background-image: url(../img/icons/40px_ueni_mouseover.gif); }
+.sidemenu-icon-shitani { width: 44px; height: 44px; background-image: url(../img/icons/40px_shitani.gif); }
+.sidemenu-icon-shitani-mouseover { width: 44px; height: 44px; background-image: url(../img/icons/40px_shitani_mouseover.gif); }
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#kakudai-menu li {
+	margin: 5px;
+	float: left;
+	list-style: none;
+}
+
+#kakudai-menu hr {
+	border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+    width: 102px;
+    height: 7px;
+}

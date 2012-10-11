@@ -43,8 +43,24 @@ $('.wrapper').masonry();
 // DoragSort
 $("#wrapper").sortable();
 
-//
+// sidemenu extension
 $("#controller").sidemenu();
+
+// dialog
+$("#dialogdemo1").dialog({
+  autoOpen: false,
+  title: 'jQuery Dialog Demo',
+  closeOnEscape: false,
+  modal: true,
+  buttons: {
+    "OK": function(){
+      $(this).dialog('close');
+    }
+  }
+});
+$('#gomi').click(function(){
+  $('#dialogdemo1').dialog('open');
+});
 
 // GRID part
 var blocks = $('.box','#wrapper');
@@ -74,7 +90,7 @@ blocks.click(function () {
 });
 
 // Controller part
-$("#accordion").accordion({ header: "h3" });
+//$("#accordion").accordion({ header: "h3" });
 $('#tabs').tabs();
 $('#dialog_link, ul#icons li').hover(
 	function() { $(this).addClass('ui-state-hover'); },
@@ -248,83 +264,38 @@ $("#up-btn").click(function() {
   }
 });
 
-// 縦書きスタイルの切り替え
+// 縦書き・横書きスタイルの切り替え
 $("#vertical-button").click(function() {
-  $(preselected).toggleClass('vertical2');
+	$(preselected).addClass('vertical2');
+});
+$("#horizontal-button").click(function() {
+	$(preselected).removeClass('vertical2');
 });
 
 // 任意のClass情報からグリッド情報を取得
 function getAnyGridInfo(gridClasses) {
-  var thisGridPosition;
   var thisGridStyle;
   for (i=0; i < gridClasses.length; i++){
-    var regposi = gridClasses[i].match(/^p[0-9]x[0-9]$/);
     var regsty = gridClasses[i].match(/^s[0-9]x[0-9]$/);
-	if (regposi)thisGridPosition = regposi.toString();
     if (regsty)thisGridStyle = regsty.toString();
   }
+  console.log(thisGridStyle);
 
   // 未定義なら終了
-  if(typeof  thisGridPosition === "undefined" || typeof  thisGridStyle === "undefined" ) {
+  if(typeof  thisGridStyle === "undefined" ) {
   	return grid;
   }
-  grid = new Grid(thisGridPosition,thisGridStyle);
+  grid = new Grid(thisGridStyle);
+  console.log("w="+grid.w+",h="+grid.h);
   return grid;
 }
 
-// Gridのブロック座標表現
-function GridCoordinate(xposi, yposi){
-	this.x = xposi;
-	this.y = yposi;
-	this.posi = "p"+xposi+"x"+yposi;
-}
-
 // Grid表現
-function Grid(gridPosition, gridStyle){
-	this.gridPosition = gridPosition;
+function Grid(gridStyle){
 	this.gridStyle = gridStyle;
 	//console.log("p="+gridPosition+",s="+gridStyle);
-	this.coordinate = new GridCoordinate(parseInt(gridPosition.charAt(1) ), parseInt(gridPosition.charAt(3)) );
 	this.w = parseInt(gridStyle.charAt(1) );
 	this.h = parseInt(gridStyle.charAt(3) );
-}
-
-// To get Grids in this style
-function getGridPositionsByTheGrid(grid){
-	var gridPositions = new Array();
-	// x方向の走査(自grid含む)
-	for (var i = 0;  i < grid.w; i++){
-		gridPositions.push( new GridCoordinate(grid.coordinate.x+i , grid.coordinate.y));
-		//console.log("x方向="+(grid.coordinate.x+i)+","+grid.coordinate.y);
-	}
-	// y方向の走査（自grid含まず）
-	for (var i = 1;  i < grid.h; i++){
-		gridPositions.push( new GridCoordinate(grid.coordinate.x , grid.coordinate.y+i));
-		//console.log("y方向="+grid.coordinate.x+","+(grid.coordinate.y+i));
-	}
-	return gridPositions;
-}
-
-// To get Grid in this Position
-function getGridByThePosition(thisPosition){
-	var belongs = scanAllPositions();
-	return belongs[thisPosition.posi];	
-}
-
-// Scan All Positions
-function scanAllPositions(){
-    blocks = $('.box','#wrapper');
-    var belong = {};
-	for(var i = 0; i < blocks.length; i++){
-		var tempgrid = getAnyGridInfo($(blocks[i]).attr("class").split(" "));
-		var array = getGridPositionsByTheGrid(tempgrid);
-		//console.log("nagasa="+array.length);
-		for(var j = 0; j < array.length; j++ ){
-			belong[array[j].posi] = tempgrid.gridPosition;
-			//console.log("belong="+array[j].posi+","+tempgrid.gridPosition);
-		}
-	}
-	return belong;
 }
 
 $(".cb-enable").click(function(){
