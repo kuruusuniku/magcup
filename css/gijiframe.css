@@ -26,14 +26,14 @@ body{
 	z-index:100;
 }
 #controller2{
-	width: 170px;
+	width: 150px;
 	position: fixed;
 	right:2%;
 	bottom:0px;
 	z-index:100;
 }
 #controller3{
-	width: 95%;
+	width: 45%;
 	position: fixed;
 	bottom:50px;
 	left: 2%;

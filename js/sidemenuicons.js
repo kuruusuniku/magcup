@@ -41,5 +41,10 @@
 	}, function () {
 		$(this).removeClass("sidemenu-icon-shitani-mouseover");
 	});
+	$("button.sidemenu-icon-tuika").hover(function () {
+		$(this).addClass("sidemenu-icon-tuika-mouseover");
+	}, function () {
+		$(this).removeClass("sidemenu-icon-tuika-mouseover");
+	});
 	};
 })(jQuery);

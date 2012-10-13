@@ -13,8 +13,8 @@ var gridClass;
 var multipleFlag = true;
 
 // 固定値定義
-var WIDTH=7;
-var HEIGHT=7;
+var WIDTH = 6;
+var HEIGHT = 6;
 
 // CLEditer
 $("#cl-input").cleditor({
@@ -47,20 +47,32 @@ $("#wrapper").sortable();
 $("#controller").sidemenu();
 
 // dialog
-$("#dialogdemo1").dialog({
+$("#delete_dialog").dialog({
   autoOpen: false,
-  title: 'jQuery Dialog Demo',
+  title: '項目の削除',
   closeOnEscape: false,
   modal: true,
   buttons: {
     "OK": function(){
+	  $(preselected).remove();
       $(this).dialog('close');
     }
   }
 });
 $('#gomi').click(function(){
-  $('#dialogdemo1').dialog('open');
+　　if(typeof  selectedGrid === "undefined") {
+  	return;
+  }
+  $('#delete_dialog').dialog('open');
 });
+
+$('#tuika').click(function(){
+　　if(typeof  selectedGrid === "undefined") {
+  	return;
+  }
+  $('#delete_dialog').dialog('open');
+});
+
 
 // GRID part
 var blocks = $('.box','#wrapper');
@@ -79,9 +91,7 @@ blocks.click(function () {
   // 現在選択中の項目のグリッド情報取得
   gridClass = $(this).attr("class").split(" ");
   selectedGrid = getAnyGridInfo(gridClass);
-  //$('li:eq(1)').text(selectedGrid.gridPosition);
-  //$('li:eq(2)').text(selectedGrid.gridStyle);
-  
+ 
   // 選択中のグリッドの内容取得
   $("#cl-input").val($(this).html());
   var editor = $("#cl-input").cleditor()[0];
@@ -89,7 +99,9 @@ blocks.click(function () {
  
 });
 
+////////////////////////////////////
 // Controller part
+////////////////////////////////////
 //$("#accordion").accordion({ header: "h3" });
 $('#tabs').tabs();
 $('#dialog_link, ul#icons li').hover(
@@ -107,161 +119,67 @@ $("#cl-getbtn").click(function() {
 });
 
 // gridStyleChange
-$("#left-btn").click(function() {
+$("#yoko-kakudai").click(function() {
   if(typeof  selectedGrid === "undefined") {
   	return;
   }
-  if (multipleFlag){
-  	multipleFlag = false;
-  	
-  	//grid position
-  	var xpo = parseInt(selectedGrid.coordinate.x);
-  	var ypo = parseInt(selectedGrid.coordinate.y);
-  	
-  	if(xpo > 0){
-  		//get next left grid style
-		var leftTrueGridPosition = getGridByThePosition(new GridCoordinate(xpo-1, ypo));
-  		var leftTrueGrid = getAnyGridInfo($("."+leftTrueGridPosition).attr("class").split(" "));
-		
-  		if(selectedGrid.w+leftTrueGrid.w <= WIDTH){
-    		$(preselected).removeClass(selectedGrid.gridStyle);
-    		$(preselected).addClass('s'+(selectedGrid.w+leftTrueGrid.w)+'x'+selectedGrid.h);
-    	
-    		// remove left grid
-			var leftgrid = $("."+leftTrueGrid.gridPosition);
-    		$(preselected).html($(preselected).html()+leftgrid.html())
-    		leftgrid.remove();
-    		$(preselected).removeClass(selectedGrid.gridPosition);
-    		$(preselected).addClass(leftTrueGrid.gridPosition);
-    	
-    		// 現在選択中の項目のグリッド情報更新
-  			gridClass = $(preselected).attr("class").split(" ");
-			selectedGrid = getAnyGridInfo(gridClass);
-  		}
-  	}
-  	multipleFlag = true;
+  if(selectedGrid.w >= WIDTH) {
+  	return;
   }
+  console.log("before="+selectedGrid.gridStyle);
+  var nextGridStyle = "s"+(selectedGrid.w+1)+"x"+selectedGrid.h;
+  $(preselected).removeClass(selectedGrid.gridStyle);
+  $(preselected).addClass(nextGridStyle);
+  selectedGrid = new Grid(nextGridStyle);
+  console.log("changed="+selectedGrid.gridStyle);
 });
 
-$("#right-btn").click(function() {
-  if (multipleFlag){
-  	multipleFlag = false;
-  	
-  	//left grid position
-  	var xpo = parseInt(position.charAt(1));
-  	var ypo = parseInt(position.charAt(3));
-
-  	//gridstyle
-  	var ssty = parseInt(gridStyle.charAt(1));
-  	var xsty = parseInt(gridStyle.charAt(3));
-  	
-  	//right grid position
-  	var rxpo = xpo + ssty;
-  	var rypo = ypo;
-  	
-  	if(rxpo < WIDTH){
-  		//get next right grid style
-  		var rightgrid = '.'+'p'+(rxpo)+'x'+rypo;
-  		var i = 1;
-  		while(1){
-  			if($(rightgrid).attr("class")!=null){break;}
-  			if(i>WIDTH){return}
-  			rightgrid = '.'+'p'+(rxpo+i)+'x'+rypo;
-  			i++;
-  		}
-  		getAnyGridInfo($(rightgrid).attr("class").split(" "));
-  		var rgxpo = parseInt(any_position.charAt(1));
-  		var rgypo = parseInt(any_position.charAt(3));
-  		var rgssty = parseInt(any_gridStyle.charAt(1));
-  		var rgxsty = parseInt(any_gridStyle.charAt(3));
-  		
-  		//right grid position
-  		var rgrxpo = rgxpo + rgssty;
-  		var rgrypo = rgypo;
-  	
-  		// redefine style
-    	$(preselected).removeClass(gridStyle);
-    	$(preselected).addClass('s'+(ssty+rgssty)+'x'+xsty);
-    	
-    	console.log(rightgrid);
-    	console.log($(rightgrid).html());
-    	$(preselected).html($(rightgrid).html()+$(preselected).html())
-    	$(rightgrid).remove();
-    	
-    	// 現在選択中の項目のグリッド情報更新
-  		gridClass = $(preselected).attr("class").split(" ");
-  		getGridInfo(gridClass);
-  	}
-  	multipleFlag = true;
+////////////////////////////////////
+// Button actions
+////////////////////////////////////
+$("#tate-kakudai").click(function() {
+  if(typeof  selectedGrid === "undefined") {
+  	return;
   }
+  if(selectedGrid.h >= HEIGHT) {
+  	return;
+  }
+  console.log("before="+selectedGrid.gridStyle);
+  var nextGridStyle = "s"+selectedGrid.w+"x"+(selectedGrid.h+1);
+  $(preselected).removeClass(selectedGrid.gridStyle);
+  $(preselected).addClass(nextGridStyle);
+  selectedGrid = new Grid(nextGridStyle);
+  console.log("changed="+selectedGrid.gridStyle);
 });
 
-$("#up-btn").click(function() {
-  if (multipleFlag){
-  	multipleFlag = false;
-  	
-  	//left grid position
-  	var xpo = parseInt(position.charAt(1));
-  	var ypo = parseInt(position.charAt(3));
-
-  	//gridstyle
-  	var ssty = parseInt(gridStyle.charAt(1));
-  	var xsty = parseInt(gridStyle.charAt(3));
-  	
-  	//up grid position
-  	var uxpo = xpo;
-  	var uypo = ypo - xsty;
-  	
-  	console.log(uxpo);
-  	console.log(uypo);
-  	
-  	if(uypo >= 0){
-  		//get next up grid style
-  		var upgrid = '.'+'p'+uxpo+'x'+uypo;
-  		var i = 1;
-
-  		while(1){
-  			if($(upgrid).attr("class")!=null){break;}
-  			if(i>HEIGHT){return}
-  			upgrid = '.'+'p'+(uxpo-i)+'x'+uypo;
-  			i++;
-  		}
-  		console.log(upgrid);
-  		getAnyGridInfo($(upgrid).attr("class").split(" "));
-  		var ugxpo = parseInt(any_position.charAt(1));
-  		var ugypo = parseInt(any_position.charAt(3));
-  		var ugssty = parseInt(any_gridStyle.charAt(1));
-  		var ugxsty = parseInt(any_gridStyle.charAt(3));
-  		
-  		console.log(ugxpo);
-  		console.log(ugypo);
-  		
-  		//up grid position
-  		var uguxpo = ugxpo;
-  		var uguypo = ugypo;
-  		
-  		//union html
-  		$(preselected).html($(upgrid).html()+$(preselected).html())
-  		$(upgrid).remove();
-  		
-  		// redefine position
-    	$(preselected).removeClass(position);
-    	$(preselected).addClass(any_position);
-  		// redefine style
-    	$(preselected).removeClass(gridStyle);
-    	if(ssty>ugssty){
-    		$(preselected).addClass('s'+(ssty)+'x'+(xsty+ugxsty));
-    	}else{
-    		$(preselected).addClass('s'+(ugssty)+'x'+(xsty+ugxsty));
-    	}
-    	
-    	// 現在選択中の項目のグリッド情報更新
-  		gridClass = $(preselected).attr("class").split(" ");
-  		getGridInfo(gridClass);
-  	}
-  	
-  	multipleFlag = true;
+$("#yoko-shukusyo").click(function() {
+  if(typeof  selectedGrid === "undefined") {
+  	return;
   }
+  if(selectedGrid.w <= 1) {
+  	return;
+  }
+  console.log("before="+selectedGrid.gridStyle);
+  var nextGridStyle = "s"+(selectedGrid.w-1)+"x"+selectedGrid.h;
+  $(preselected).removeClass(selectedGrid.gridStyle);
+  $(preselected).addClass(nextGridStyle);
+  selectedGrid = new Grid(nextGridStyle);
+  console.log("changed="+selectedGrid.gridStyle);
+});
+
+$("#tate-shukusyo").click(function() {
+  if(typeof  selectedGrid === "undefined") {
+  	return;
+  }
+  if(selectedGrid.h <= 1) {
+  	return;
+  }
+  console.log("before="+selectedGrid.gridStyle);
+  var nextGridStyle = "s"+selectedGrid.w+"x"+(selectedGrid.h-1);
+  $(preselected).removeClass(selectedGrid.gridStyle);
+  $(preselected).addClass(nextGridStyle);
+  selectedGrid = new Grid(nextGridStyle);
+  console.log("changed="+selectedGrid.gridStyle);
 });
 
 // 縦書き・横書きスタイルの切り替え
