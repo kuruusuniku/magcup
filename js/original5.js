@@ -109,18 +109,23 @@ $.escapeHTML = function(val) {
 };
 
 $('#load').click(function(){
+  console.log("json load start");
   var load_arti = '<div class="box s4x1 p2x2 vertical2">16.ドイツ3/4、日本1/4の血を持つ混血児で橙髪青眼（あるいは紅毛碧眼）。国籍はアメリカ。4歳の時にエヴァンゲリオン操縦の二番目の適格者として選出され、以降、セカンドチルドレンとして英才教育を受けた。14歳にして大学を卒業。EVA弐号機とのコンタクトはドイツ語を基準にしているが、日本語も流暢に話すことができる。非常に高飛車であり傲慢かつ自己中心的な性格で、劇中ではプライドの高さの描写が顕著である。一人称は基本的に「あたし」。口癖は「あんたバカぁ?」。</div>';
-  $.getJSON("test.js", function(json){
-    alert("JSON Data: " + json.json_data[0].content);
-  });
   $.getJSON(
-      './Json.js', // アクセス先のURL
+      //第一引数：JSONのURL
+      'http://www.pages-me.com/magcup-api/load/36',
+      //第二引数：RESTパラメータ
+      null,
+      //第三引数：コールバック関数
       function(data, status) {
-        load_arti = data.contetns
+        var load_arti = data.content;
+        console.log(typeof data);
+        console.log(typeof load_arti);
+        console.log(load_arti);
+        console.log("json load end");
+        $('#wrapper').html(load_arti);
       }
   );
-  var articles = $('#wrapper').html(load_arti).
-  console.log("json load");
 });
 
 // GRID part
