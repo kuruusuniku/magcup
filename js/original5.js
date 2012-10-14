@@ -73,6 +73,55 @@ $('#tuika').click(function(){
   $('#delete_dialog').dialog('open');
 });
 
+////////////////////////////////////
+// Save function
+////////////////////////////////////
+function func_json_request(json_data){
+  $.ajax(
+        {
+            url:'http://www.pages-me.com/magcup-api/save',
+            type:'POST',
+            data:json_data,
+            error:function(){},
+            complete:function(data){console.log(data.responseText)},
+            dataType:'json'
+        }
+    );
+}
+
+$('#save').click(function(){
+  $('#delete_dialog').dialog('open');
+  var articles = $('#wrapper').html();
+  var data = { "json_data":[{"content": articles}]} ;
+  //data = {"content": articles};
+  //data = "json_data=" + data;
+  func_json_request(data);
+  console.log("json send");
+});
+
+
+
+////////////////////////////////////
+// Load function
+////////////////////////////////////
+$.escapeHTML = function(val) {
+        return $("<div/>").text(val).html();
+};
+
+$('#load').click(function(){
+  var load_arti = '<div class="box s4x1 p2x2 vertical2">16.ドイツ3/4、日本1/4の血を持つ混血児で橙髪青眼（あるいは紅毛碧眼）。国籍はアメリカ。4歳の時にエヴァンゲリオン操縦の二番目の適格者として選出され、以降、セカンドチルドレンとして英才教育を受けた。14歳にして大学を卒業。EVA弐号機とのコンタクトはドイツ語を基準にしているが、日本語も流暢に話すことができる。非常に高飛車であり傲慢かつ自己中心的な性格で、劇中ではプライドの高さの描写が顕著である。一人称は基本的に「あたし」。口癖は「あんたバカぁ?」。</div>';
+  $.getJSON("test.js", function(json){
+    alert("JSON Data: " + json.json_data[0].content);
+  });
+  $.getJSON(
+      './Json.js', // アクセス先のURL
+      function(data, status) {
+        load_arti = data.contetns
+      }
+  );
+  var articles = $('#wrapper').html(load_arti).
+  console.log("json load");
+});
 
 // GRID part
 var blocks = $('.box','#wrapper');
